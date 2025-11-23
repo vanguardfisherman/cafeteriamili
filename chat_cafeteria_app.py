@@ -211,8 +211,8 @@ with st.sidebar:
             st.session_state.historial.append(("user", pregunta))
             st.session_state.historial.append(("bot", respuesta))
 
-    # Mostrar historial
-    for rol, texto in st.session_state.historial:
+    # Mostrar historial (más recientes arriba)
+    for rol, texto in reversed(st.session_state.historial):
         if rol == "user":
             st.markdown(f"<div class='chat-bubble-user'><b>Tú:</b> {texto}</div>", unsafe_allow_html=True)
         else:
