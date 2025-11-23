@@ -7,8 +7,8 @@ import google.generativeai as genai
 # Configuración de la página
 st.set_page_config(page_title="Cafetería Mili 🌸", page_icon="🍰", layout="wide")
 
-# Configurar API Key de Gemini
-API_KEY = "AIzaSyCahdcqm4qGOpQZN0WxXJ4iH3sot98B9o4"
+# Configurar API Key de Gemini (usa secrets en producción)
+API_KEY = st.secrets.get("GEMINI_API_KEY", "AIzaSyCahdcqm4qGOpQZN0WxXJ4iH3sot98B9o4")
 genai.configure(api_key=API_KEY)
 
 # Estilos CSS Personalizados (Pink / Hello Kitty Theme)
