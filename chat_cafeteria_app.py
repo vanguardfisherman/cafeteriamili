@@ -169,7 +169,12 @@ with st.sidebar:
     if "historial" not in st.session_state:
         st.session_state.historial = []
 
-    pregunta = st.text_input("¿Qué deseas saber? 💕")
+    
+    # Inicializar el key para limpiar el input
+    if "input_key" not in st.session_state:
+        st.session_state.input_key = 0
+    
+    pregunta = st.text_input("¿Qué deseas saber? 💕", key=f"msg_input_{st.session_state.input_key}")
     
     if pregunta:
         if pregunta.lower() in ["salir", "exit", "quit", "chao"]:
@@ -210,6 +215,10 @@ with st.sidebar:
 
             st.session_state.historial.append(("user", pregunta))
             st.session_state.historial.append(("bot", respuesta))
+            
+            # Limpiar el input incrementando el key
+            st.session_state.input_key += 1
+            st.rerun()
 
     # Mostrar historial (más recientes arriba)
     for rol, texto in reversed(st.session_state.historial):
