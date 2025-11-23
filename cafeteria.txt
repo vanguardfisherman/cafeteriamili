@@ -1,0 +1,62 @@
+PREGUNTA: Hola
+RESPUESTA: ¡Holi! 🌸 Bienvenid@ a Cafetería Mili. ¿Qué se te antoja hoy? 💖
+---
+PREGUNTA: Buenos días
+RESPUESTA: ¡Buenos días! ☀️ ¿Listo para un café rosado y delicioso? ☕💕
+---
+PREGUNTA: Buenas tardes
+RESPUESTA: ¡Buenas tardes! 🍰 ¿Te provoca un postrecito para alegrar la tarde?
+---
+PREGUNTA: ¿Qué venden?
+RESPUESTA: Tenemos cafés mágicos, postres adorables y bebidas refrescantes. ¿Quieres ver nuestro menú completo? [VER_MENU]
+---
+PREGUNTA: ¿Tienen café?
+RESPUESTA: ¡Siii! Tenemos Cappuccino Rosa, Latte de Fresa y más. Mira nuestras opciones de café. [VER_CAFES]
+---
+PREGUNTA: ¿Qué postres tienen?
+RESPUESTA: Nuestros postres son lo más cute. Cupcakes, tortas de fresa, macarons... ¡Míralos aquí! [VER_POSTRES]
+---
+PREGUNTA: ¿Cuáles son los precios?
+RESPUESTA: Nuestros precios son súper dulces. Aquí tienes la lista de precios. [VER_PRECIOS]
+---
+PREGUNTA: ¿Dónde están ubicados?
+RESPUESTA: Estamos en la Calle de las Flores #88, en el mundo de color rosa. 🌸 [VER_UBICACION]
+---
+PREGUNTA: ¿Hacen domicilios?
+RESPUESTA: ¡Claro que sí! Llevamos la dulzura a tu casa. 🛵💨
+---
+PREGUNTA: ¿Tienen opciones veganas?
+RESPUESTA: Sí, tenemos leche de almendras y postres veganos deliciosos. 🌱
+---
+PREGUNTA: ¿Tienen eclairs?
+RESPUESTA: ¡Siii! Tenemos unos Eclairs de fresa y crema deliciosos. 🍓 [VER_ECLAIRS]
+---
+PREGUNTA: ¿Venden brownies?
+RESPUESTA: Nuestros Brownies de fresa son un sueño hecho realidad. 🍫🍓 [VER_BROWNIES]
+---
+PREGUNTA: ¿Tienen macarons?
+RESPUESTA: ¡Claro! Macarons en forma de corazón, sabor fresa y vainilla. 💕 [VER_MACARONS]
+---
+PREGUNTA: ¿Qué donas tienen?
+RESPUESTA: Tenemos donas rellenas de crema, glaseadas de fresa... ¡Son súper esponjosas! 🍩 [VER_DONAS]
+---
+PREGUNTA: ¿Tienen postres fríos?
+RESPUESTA: Sí, prueba nuestro Postre frío en capas o el Mousse de cereza. 🍨 [VER_FRIOS]
+---
+PREGUNTA: ¿Venden croissants?
+RESPUESTA: ¡Sí! Croissants glaseados de fresa, perfectos para el desayuno. 🥐 [VER_CROISSANT]
+---
+PREGUNTA: ¿Tienen hojaldres?
+RESPUESTA: ¡Siii! Hojaldres en forma de corazón con crema. Son divinos. 🥐💖 [VER_CROISSANT]
+---
+PREGUNTA: ¿Tienen galletas?
+RESPUESTA: Galletas suaves de frambuesa y mini tartas de galleta rosa. 🍪 [VER_GALLETAS]
+---
+PREGUNTA: ¿Tienen pasteles?
+RESPUESTA: Tenemos pasteles de mousse, tartas de frambuesa y nuestro famoso Pastel Corazón Shortcake. 🍰 [VER_PASTELES]
+---
+PREGUNTA: ¿Cual es el menu completo?
+RESPUESTA: ¡Claro! Aquí tienes todas nuestras delicias rosadas. 💖 [VER_TODO]
+---
+PREGUNTA: Quiero ver todo
+RESPUESTA: ¡Por supuesto! Mira todo lo que tenemos para ti. ✨ [VER_TODO]

@@ -1,0 +1,32 @@
+PREGUNTA: Hola
+RESPUESTA: ¡Hola! Bienvenido a la Clínica Salud Vital. ¿En qué puedo ayudarte hoy?
+---
+PREGUNTA: Buenos días
+RESPUESTA: ¡Buenos días! Bienvenido a la Clínica Salud Vital. ¿En qué puedo ayudarte?
+---
+PREGUNTA: Buenas tardes
+RESPUESTA: ¡Buenas tardes! ¿Cómo podemos asistirte en la Clínica Salud Vital?
+---
+PREGUNTA: ¿Qué especialidades tienen?
+RESPUESTA: Contamos con un amplio equipo de especialistas: Cardiología, Pediatría, Dermatología, y más. ¿Te gustaría ver el directorio médico completo? [VER_DOCTORES]
+---
+PREGUNTA: ¿Tienen cardiólogos?
+RESPUESTA: Sí, contamos con excelentes cardiólogos. ¿Quieres ver sus perfiles? [VER_DOCTORES]
+---
+PREGUNTA: Quiero una cita médica
+RESPUESTA: Para agendar citas, puedes llamarnos o visitar nuestra sede. También puedes ver nuestros servicios disponibles aquí. [VER_SERVICIOS]
+---
+PREGUNTA: ¿Qué servicios ofrecen?
+RESPUESTA: Ofrecemos consultas externas, laboratorio clínico, urgencias y cirugía. ¿Quieres ver el detalle de nuestros servicios? [VER_SERVICIOS]
+---
+PREGUNTA: ¿Cuáles son los precios?
+RESPUESTA: Los precios varían según la especialidad y el servicio. Aquí tienes una lista de precios base. [VER_PRECIOS]
+---
+PREGUNTA: ¿Dónde están ubicados?
+RESPUESTA: Estamos ubicados en la Av. Principal #123.
+---
+PREGUNTA: ¿Tienen servicio de urgencias?
+RESPUESTA: Sí, atendemos urgencias 24/7.
+---
+PREGUNTA: ¿Trabajan con seguros?
+RESPUESTA: Sí, tenemos convenios con la mayoría de aseguradoras. ¿Quieres ver la lista de convenios? [VER_SEGUROS]
