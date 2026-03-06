@@ -124,38 +124,60 @@ def preparar_embeddings(df, _modelo):
     embeddings = _modelo.encode(df["Preguntas"].tolist(), convert_to_tensor=True)
     return embeddings
 
-def consultar_gemini(pregunta, contexto_txt, historial=[]):
+def consultar_gemini(pregunta, contexto_txt, inventario, historial=[]):
     try:
-        model = genai.GenerativeModel('gemini-flash-latest')
-        
-        # Formatear historial para contexto
+        model = genai.GenerativeModel('gemini-1.5-flash')
+
+        inventario_txt = "\n".join([
+            f"- {v['nombre']}: ${v['precio']:.2f} (disponibles: {v['cantidad']})"
+            for v in inventario.values()
+        ])
+
         historial_txt = ""
-        for rol, texto in historial[-5:]: # Últimos 5 mensajes para no saturar
+        for rol, texto in historial[-6:]:
             nombre = "Cliente" if rol == "user" else "Mili"
             historial_txt += f"{nombre}: {texto}\n"
 
-        prompt = f"""
-        Eres Mili, la asistente virtual de una cafetería llamada 'Cafetería Mili'.
-        Tu personalidad es muy tierna, amable, usas emojis como 🌸, 💖, 🍰, y hablas de forma "kawaii".
-        Todo en la cafetería es de color rosa y temática Hello Kitty.
-        
-        Usa la siguiente información de contexto sobre la cafetería para responder.
-        También tienes el historial de la conversación reciente para entender el contexto.
-        
-        Contexto de la Cafetería:
-        {contexto_txt}
-        
-        Historial de Conversación:
-        {historial_txt}
-        
-        Pregunta actual del cliente: {pregunta}
-        Respuesta:
-        """
+        prompt = f"""Eres Mili, la asistente virtual kawaii de "Cafetería Mili" 🌸.
+Personalidad: tierna, amable, usas emojis (🌸💖🍰🍓✨🎀), hablas con cariño y entusiasmo.
+
+INVENTARIO ACTUAL (precios y stock reales):
+{inventario_txt}
+
+INFORMACIÓN ADICIONAL DE LA CAFETERÍA:
+{contexto_txt}
+
+INSTRUCCIONES IMPORTANTES:
+1. Responde SIEMPRE en español, de forma corta, amigable y kawaii.
+2. Si preguntan por un producto, menciona su precio y si hay disponibilidad.
+3. Si no hay stock de algo, avísalo con tristeza pero ofrece alternativas.
+4. Al final de tu respuesta agrega UNO de estos tags si es relevante (solo el tag, sin explicación):
+   [VER_ECLAIRS]    → para eclairs
+   [VER_BROWNIES]   → para brownies
+   [VER_MACARONS]   → para macarons
+   [VER_DONAS]      → para cualquier tipo de dona
+   [VER_FRIOS]      → para postres fríos (flan, mousse, postre en capas)
+   [VER_CROISSANT]  → para croissants, hojaldres, rollos de canela
+   [VER_GALLETAS]   → para galletas y mini tartas
+   [VER_PASTELES]   → para pasteles grandes, tartas y shortcakes
+   [VER_CAFES]      → para bebidas y cafés
+   [VER_PRECIOS]    → para ver lista completa de precios
+   [VER_UBICACION]  → para dirección o cómo llegar
+   [VER_POSTRES]    → para ver postres en general (choux, bomboloni, sándwich japonés)
+   [VER_TODO]       → para ver todo el menú completo
+5. Si no entiendes la pregunta, pide amablemente que la reformulen.
+6. No inventes productos que no están en el inventario.
+
+Historial reciente de la conversación:
+{historial_txt}
+Cliente: {pregunta}
+Mili:"""
+
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:
-        print(f"Error Gemini: {e}") # Log error to console
-        return "¡Ups! Mi cerebro rosado está pensando demasiado. Intenta de nuevo. 🌸"
+        print(f"Error Gemini: {e}")
+        return "¡Ups! 😿 Mi cerebro rosado se confundió un poquito. ¿Puedes intentarlo de nuevo? 🌸"
 
 # Cargar datos y modelo
 df = cargar_txt("cafeteria.txt")
@@ -207,14 +229,14 @@ with st.sidebar:
                 embedding_pregunta = modelo.encode(pregunta, convert_to_tensor=True)
                 similitudes = util.semantic_search(embedding_pregunta, embeddings_preguntas, top_k=1)
                 
-                if similitudes[0][0]['score'] > 0.5:
+                if similitudes[0][0]['score'] > 0.6:
                     idx = similitudes[0][0]['corpus_id']
                     respuesta = df["Respuestas"].iloc[int(idx)]
                 else:
-                    # Fallback a Gemini con Historial
-                    respuesta = consultar_gemini(pregunta, contexto_completo, st.session_state.historial)
+                    # Fallback a Gemini con inventario e historial
+                    respuesta = consultar_gemini(pregunta, contexto_completo, st.session_state.inventario, st.session_state.historial)
             else:
-                respuesta = consultar_gemini(pregunta, contexto_completo, st.session_state.historial)
+                respuesta = consultar_gemini(pregunta, contexto_completo, st.session_state.inventario, st.session_state.historial)
 
             st.session_state.historial.append(("user", pregunta))
             st.session_state.historial.append(("bot", respuesta))

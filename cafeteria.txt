@@ -60,3 +60,60 @@ RESPUESTA: ¡Claro! Aquí tienes todas nuestras delicias rosadas. 💖 [VER_TODO
 ---
 PREGUNTA: Quiero ver todo
 RESPUESTA: ¡Por supuesto! Mira todo lo que tenemos para ti. ✨ [VER_TODO]
+---
+PREGUNTA: ¿Tienen bomboloni?
+RESPUESTA: ¡Sí! Nuestros Bomboloni de Fresa y crema son esponjosísimos y súper tiernos. 🍓💖 [VER_POSTRES]
+---
+PREGUNTA: ¿Tienen choux?
+RESPUESTA: ¡Claro! Tenemos Choux Craquelin de fresa y flor de crema. Son una obra de arte kawaii. 🌸✨ [VER_POSTRES]
+---
+PREGUNTA: ¿Tienen flan?
+RESPUESTA: ¡Sí! Nuestro Flan de Vainilla con caramelo es suave, cremoso y muy especial. 🍮💛 [VER_FRIOS]
+---
+PREGUNTA: ¿Tienen mousse?
+RESPUESTA: ¡Sí! El Mousse Espejo de cereza es nuestro postre estrella. ¡Parece una joya comestible! 💎🍒 [VER_FRIOS]
+---
+PREGUNTA: ¿Tienen rollos de canela?
+RESPUESTA: ¡Sí! Nuestros Rollos de Canela con glaseado rosa son suaves y aromáticos. 🍥🌸 [VER_CROISSANT]
+---
+PREGUNTA: ¿Tienen sándwich japonés?
+RESPUESTA: ¡Sí! El Sándwich Japonés de Fresa es cremoso, esponjoso y súper kawaii. 🍓🥪💖 [VER_POSTRES]
+---
+PREGUNTA: ¿A qué hora abren?
+RESPUESTA: Abrimos de lunes a sábado de 8am a 8pm, y domingos de 9am a 6pm. ☀️💖
+---
+PREGUNTA: ¿Cuál es el horario?
+RESPUESTA: Nuestro horario es: Lun-Sáb de 8:00am a 8:00pm, Dom de 9:00am a 6:00pm. 🕐🌸
+---
+PREGUNTA: ¿Cómo puedo pagar?
+RESPUESTA: Aceptamos efectivo, tarjetas de crédito/débito y pagos digitales. 💳💖 ¡Todos los métodos te hacen parte de la familia Mili!
+---
+PREGUNTA: ¿Cuánto cuesta el envío?
+RESPUESTA: El envío tiene un costo fijo de $2.00. ¡Y llega con mucho amor y decoración rosada! 🛵💕
+---
+PREGUNTA: ¿Tienen opciones sin gluten?
+RESPUESTA: Tenemos algunos postres sin gluten. Consúltanos por cada producto específico para asegurarnos. 🌿💕
+---
+PREGUNTA: ¿Hacen pedidos personalizados?
+RESPUESTA: ¡Sí! Hacemos pasteles y postres personalizados con mucho amor. Contáctanos con al menos 3 días de anticipación. 🎂🌸
+---
+PREGUNTA: ¿Tienen alguna promoción?
+RESPUESTA: ¡Seguimos nuestras redes para ver las promos del día! A veces tenemos 2x1 en macarons y descuentos en pasteles. 🎉💖
+---
+PREGUNTA: ¿Qué bebidas tienen?
+RESPUESTA: Tenemos Cappuccino Rosa, Latte de Fresa, Mochaccino Love y Espresso Cute. ☕🌸 [VER_CAFES]
+---
+PREGUNTA: ¿Tienen algo para desayunar?
+RESPUESTA: ¡Sí! Para desayuno tenemos croissants glaseados, rollos de canela y sándwich japonés. 🌅🥐 [VER_CROISSANT]
+---
+PREGUNTA: ¿Cuál es el postre más popular?
+RESPUESTA: Nuestros favoritos de los clientes son los Macarons Love y el Pastel Corazón Shortcake. ¡Son irresistibles! 💖🍰 [VER_PASTELES]
+---
+PREGUNTA: ¿Tienen postres para cumpleaños?
+RESPUESTA: ¡Claro! Nuestro Pastel Mousse Cereza y el Shortcake Corazón son perfectos para celebrar. 🎂🎉 [VER_PASTELES]
+---
+PREGUNTA: Gracias
+RESPUESTA: ¡De nada, corazón! 💖 Fue un placer atenderte. ¡Vuelve pronto a Cafetería Mili! 🌸🍰
+---
+PREGUNTA: Adiós
+RESPUESTA: ¡Byee! 🌸 Que tengas un día tan dulce como nuestros postres. ¡Vuelve pronto! 💖
