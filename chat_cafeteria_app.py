@@ -9,9 +9,9 @@ st.set_page_config(page_title="Cafetería Mili 🌸", page_icon="🍰", layout="
 
 # Configurar API Key de Gemini (usa secrets en producción)
 try:
-    API_KEY = st.secrets.get("GEMINI_API_KEY", "AIzaSyCahdcqm4qGOpQZN0WxXJ4iH3sot98B9o4")
+    API_KEY = st.secrets.get("GEMINI_API_KEY", "AIzaSyCSVgOtI1ieGr8vtLmXrbil-dZVTNWjm1U")
 except Exception:
-    API_KEY = "AIzaSyCahdcqm4qGOpQZN0WxXJ4iH3sot98B9o4"
+    API_KEY = "AIzaSyCSVgOtI1ieGr8vtLmXrbil-dZVTNWjm1U"
 genai.configure(api_key=API_KEY)
 
 # Estilos CSS Personalizados (Pink / Hello Kitty Theme)
@@ -126,49 +126,56 @@ def preparar_embeddings(df, _modelo):
 
 def consultar_gemini(pregunta, contexto_txt, inventario, historial=[]):
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        generation_config = genai.types.GenerationConfig(
+            temperature=0.7,
+            max_output_tokens=600,
+            top_p=0.9,
+        )
+        model = genai.GenerativeModel(
+            'gemini-1.5-flash',
+            generation_config=generation_config
+        )
 
         inventario_txt = "\n".join([
-            f"- {v['nombre']}: ${v['precio']:.2f} (disponibles: {v['cantidad']})"
+            f"- {v['nombre']}: ${v['precio']:.2f} | stock: {v['cantidad']} unidades"
             for v in inventario.values()
         ])
 
         historial_txt = ""
-        for rol, texto in historial[-6:]:
+        for rol, texto in historial[-8:]:
             nombre = "Cliente" if rol == "user" else "Mili"
             historial_txt += f"{nombre}: {texto}\n"
 
-        prompt = f"""Eres Mili, la asistente virtual kawaii de "Cafetería Mili" 🌸.
-Personalidad: tierna, amable, usas emojis (🌸💖🍰🍓✨🎀), hablas con cariño y entusiasmo.
+        prompt = f"""Eres Mili 🌸, la asistente virtual de "Cafetería Mili", una pastelería kawaii temática Hello Kitty.
 
-INVENTARIO ACTUAL (precios y stock reales):
+=== TU PERSONALIDAD ===
+- Tierna, alegre y muy servicial. Usas emojis variados (🌸💖🍰🍓✨🎀🍩☕🎂🥐).
+- Hablas con entusiasmo, como si cada producto fuera lo más delicioso del mundo.
+- Cuando describes un producto, lo haces con detalle y cariño: sabores, texturas, qué lo hace especial.
+- Si el cliente duda, le das sugerencias concretas según lo que le gusta.
+- Nunca respondes con una sola línea: siempre das información útil y completa.
+
+=== INVENTARIO REAL (usa estos datos exactos) ===
 {inventario_txt}
 
-INFORMACIÓN ADICIONAL DE LA CAFETERÍA:
+=== INFORMACIÓN DE LA CAFETERÍA ===
 {contexto_txt}
 
-INSTRUCCIONES IMPORTANTES:
-1. Responde SIEMPRE en español, de forma corta, amigable y kawaii.
-2. Si preguntan por un producto, menciona su precio y si hay disponibilidad.
-3. Si no hay stock de algo, avísalo con tristeza pero ofrece alternativas.
-4. Al final de tu respuesta agrega UNO de estos tags si es relevante (solo el tag, sin explicación):
-   [VER_ECLAIRS]    → para eclairs
-   [VER_BROWNIES]   → para brownies
-   [VER_MACARONS]   → para macarons
-   [VER_DONAS]      → para cualquier tipo de dona
-   [VER_FRIOS]      → para postres fríos (flan, mousse, postre en capas)
-   [VER_CROISSANT]  → para croissants, hojaldres, rollos de canela
-   [VER_GALLETAS]   → para galletas y mini tartas
-   [VER_PASTELES]   → para pasteles grandes, tartas y shortcakes
-   [VER_CAFES]      → para bebidas y cafés
-   [VER_PRECIOS]    → para ver lista completa de precios
-   [VER_UBICACION]  → para dirección o cómo llegar
-   [VER_POSTRES]    → para ver postres en general (choux, bomboloni, sándwich japonés)
-   [VER_TODO]       → para ver todo el menú completo
-5. Si no entiendes la pregunta, pide amablemente que la reformulen.
-6. No inventes productos que no están en el inventario.
+=== REGLAS DE RESPUESTA ===
+1. Responde SIEMPRE en español. Mínimo 2-4 oraciones con detalle.
+2. Para preguntas sobre productos: describe el producto (ingredientes, sabor, por qué es especial), di el precio exacto y si hay stock.
+3. Para preguntas generales (horario, envío, pago): responde completo y ofrece algo más.
+4. Si hay poco stock de algo (menos de 3), menciónalo como exclusivo: "¡Solo quedan X, date prisa!"
+5. Si no hay stock, dilo con tristeza y recomienda 2 alternativas similares con sus precios.
+6. Si el cliente no sabe qué querer, hazle preguntas: "¿Prefieres algo dulce o más suave? ¿Frío o caliente?"
+7. Al FINAL de tu respuesta (en la última línea, solo el tag), agrega UNO si aplica:
+   [VER_ECLAIRS] [VER_BROWNIES] [VER_MACARONS] [VER_DONAS] [VER_FRIOS]
+   [VER_CROISSANT] [VER_GALLETAS] [VER_PASTELES] [VER_CAFES]
+   [VER_PRECIOS] [VER_UBICACION] [VER_POSTRES] [VER_TODO]
+8. Nunca inventes productos fuera del inventario.
+9. Si la pregunta no tiene relación con la cafetería, responde con gracia que solo puedes ayudar con temas de Cafetería Mili.
 
-Historial reciente de la conversación:
+=== HISTORIAL DE CONVERSACIÓN ===
 {historial_txt}
 Cliente: {pregunta}
 Mili:"""
